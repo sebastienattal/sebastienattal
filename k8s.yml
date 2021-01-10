@@ -1,33 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sebastienattal
+  name: hello-world
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: sebastienattal
+      app: hello-world
   template:
     metadata:
       labels:
-        app: sebastienattal
+        app: hello-world
     spec:
       containers:
-        - image: php
-          name: php
+        - image: whatwedo/symfony5:php
+          name: hello-world
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: sebastienattal
+  name: hello-world
   annotations:
     dev.okteto.com/auto-ingress: "true"
 spec:
   type: ClusterIP
   ports:
-    - name: "sebastienattal"
+    - name: "hello-world"
       port: 8080
   selector:
-    app: sebastienattal
+    app: hello-world
