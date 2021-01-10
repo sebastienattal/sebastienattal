@@ -1,0 +1,14 @@
+name: hello-world
+image: php
+workdir: /app
+command: [ "php", "-S", "0.0.0.0:8080", "-t", "public"]
+volumes:
+  - /root/.composer/cache
+forward:
+  - 8080:8080
+reverse:
+  - 9000:9000
+resources:
+  limits:
+    cpu: "1"
+    memory: 2Gi
