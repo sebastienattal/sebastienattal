@@ -15,3 +15,19 @@ spec:
       containers:
       - name: sebastienattal
         image: php:8.0-apache
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: sebastienattal
+  annotations:
+    dev.okteto.com/auto-ingress: "true"
+spec:
+  type: ClusterIP
+  ports:
+  - name: "sebastienattal"
+    port: 8080
+  selector:
+    app: sebastienattal
