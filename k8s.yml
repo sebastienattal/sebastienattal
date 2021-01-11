@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sebastienattal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sebastienattal
+  template:
+    metadata:
+      labels:
+        app: sebastienattal
+    spec:
+      containers:
+      - name: sebastienattal
+        image: php:8.0-apache
